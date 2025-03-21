@@ -1,14 +1,17 @@
-const gulp = require('gulp')
-const sass = require('gulp-sass')(require('sass'))
-const rename = require('gulp-rename')
-const htmlmin = require('gulp-htmlmin')
-const sourcemaps = require('gulp-sourcemaps')
-const uglify = require('gulp-uglify')
+import gulp from 'gulp';
+import gulpSass from 'gulp-sass';
+import * as sass from "sass";
+import rename from 'gulp-rename';
+import htmlmin from 'gulp-htmlmin';
+import sourcemaps from 'gulp-sourcemaps';
+import uglify from 'gulp-uglify';
+
+const compileSass = gulpSass(sass)
 
 function compilaSass() {
     return gulp.src('./src/styles/**/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    .pipe(compileSass())
     .pipe(sourcemaps.write('./maps'))
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('dist/styles'))
@@ -32,7 +35,7 @@ function watchFiles() {
     gulp.watch('./src/scripts/*.js', {ignoreInitial: false}, comprimeJavaScript)
 }
 
-exports.default = gulp.series(compilaSass, comprimeHtml, comprimeJavaScript);
-exports.watch = watchFiles;
+export default gulp.series(compilaSass, comprimeHtml, comprimeJavaScript);
+export {watchFiles as watch};
 
 

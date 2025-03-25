@@ -1,20 +1,26 @@
-// const endpoint = 'https://dummyjson.com/products'; // url da requisição ao servidor
-const cep = '01001000';
-const endpoint = `https://viacep.com.br/ws/${cep}/json/`; // url da requisição ao servidor
+// cep de teste = '01001000';
 
+export const chamarApi = async () => { 
+    const cep = document.getElementsByName('cep')[0].value;
+    const endpoint = `https://viacep.com.br/ws/${cep}/json/`;
 
-export const chamarApi = async () => { // convertido a função chamarApi para arrow function
-    try { // a função vai tentar executar esse bloco
+    const state = document.getElementsByName('state')[0]
+    const city = document.getElementsByName('city')[0]
+    const street = document.getElementsByName('street')[0]
+
+    try { 
         const resp = await fetch(endpoint)
 
         if (resp.status === 200) {
             const obj = await resp.json();
+            state.value = obj.estado
+            city.value = obj.localidade
+            street.value = obj.logradouro
             console.log(obj)
-            console.log(obj.localidade)
-            console.log(obj.logradouro)
+
         }
 
-    } catch (error) { // se o bloco anterior (try) falhar esse bloco será executado
+    } catch (error) { 
         console.log('Ocorreu um erro', error)
     }
 }

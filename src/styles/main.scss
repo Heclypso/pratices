@@ -3,19 +3,22 @@
 @use 'variables';
 @use 'sass:map';
 @use 'math';
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-weight: map.get(maps.$font-weights, "regular")
-}
+@use 'breakpoints';
+@use 'reset';
 
 body {
-    
     background-color: variables.$primaryColor;
     color: variables.$primaryTextColor;
     @include mixins.flexElement();
+    font-weight: map.get(maps.$font-weights, "regular");
+
+    @media screen and (max-width: breakpoints.$tablet) {
+        background-color: variables.$secondaryColor;
+    }
+
+    @media screen and (max-width: breakpoints.$desktop) {
+        background-color: variables.$primaryTextColor;
+    }
 }
 
 .form {

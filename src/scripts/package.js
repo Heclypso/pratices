@@ -25,3 +25,10 @@ export const chamarApi = async () => {
     }
 }
 
+export function somarComRest(...numeros) {
+    const soma = numeros.reduce((total, numeroAtual) => {
+        total += numeroAtual
+        return total
+    }, 0)
+    return soma
+}

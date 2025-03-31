@@ -25,3 +25,11 @@ carroDaJulia.motor
 const { motor: motorDoCarroDaJulia } = carroDaJulia;
 
 console.log(motorDoCarroDaJulia)
+
+let mapDeFrutas = new Map([
+    ["maça", 200],
+    ["banana", 400],
+    ["maça-verde", 100]
+])
+
+console.log(mapDeFrutas)

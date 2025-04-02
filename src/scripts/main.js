@@ -34,14 +34,6 @@ let mapDeFrutas = new Map([
 
 console.log(mapDeFrutas)
 
-for (let keys of mapDeFrutas.keys()) {
-    console.log(keys)
-}
-
-for (let values of mapDeFrutas.values()) {
-    console.log(values)
-}
-
-for (let entries of mapDeFrutas.entries()) {
-    console.log(entries)
+for (let [chave, valor] of mapDeFrutas.entries()) {
+    console.log(`${chave}, ${valor}`)
 }

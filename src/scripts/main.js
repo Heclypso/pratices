@@ -37,3 +37,11 @@ console.log(mapDeFrutas)
 for (let [chave, valor] of mapDeFrutas.entries()) {
     console.log(`${chave}, ${valor}`)
 }
+
+const array = ['Banana', 'Maça', 'Banana', 'Maça']
+
+const set = new Set([...array])
+
+const arraySemItensDuplicados = [...set]
+
+console.log(arraySemItensDuplicados)

@@ -38,10 +38,42 @@ for (let [chave, valor] of mapDeFrutas.entries()) {
     console.log(`${chave}, ${valor}`)
 }
 
-const array = ['Banana', 'Maça', 'Banana', 'Maça']
+const array = ['Facebook', 'Instagram', 'Facebook', 'Facebook']
 
 const set = new Set([...array])
 
 const arraySemItensDuplicados = [...set]
 
-console.log(arraySemItensDuplicados)
+arraySemItensDuplicados.forEach(function(nomeDaRedeSocial, indice){
+    console.log(`#${indice} possui uma conta na rede social ${nomeDaRedeSocial}`)
+})
+
+let tempoOffline = '2 Dias';
+
+const itensDetalhados = arraySemItensDuplicados.map(function(itemAtual){
+    return itemAtual = {
+        nome: itemAtual,
+        tempoOffline: `${tempoOffline}`,
+        verificado: true
+    }
+})
+console.log(itensDetalhados)
+
+const contaDoFacebook = redeSocial => redeSocial.nome === 'Facebook';
+
+const possuiContaNoFacebook = itensDetalhados.find(contaDoFacebook)
+console.log(possuiContaNoFacebook)
+
+const indiceDoItem = itensDetalhados.findIndex(contaDoFacebook)
+console.log(indiceDoItem)
+
+
+
+const redeSocialEstaVerificada = redeSocial => redeSocial.verificado === true;
+// itensDetalhados[0].verificado = false;
+
+const todasAsContasEstaoVerificadas = itensDetalhados.every(redeSocialEstaVerificada)
+console.log(todasAsContasEstaoVerificadas)
+
+const filtraContasVerificadas = itensDetalhados.filter(redeSocialEstaVerificada)
+console.log(filtraContasVerificadas)
